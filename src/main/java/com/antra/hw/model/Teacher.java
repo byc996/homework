@@ -28,8 +28,6 @@ public class Teacher{
     private String name;
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = false)
-//    @JsonIgnoreProperties(value = { "student", "teacher" })
-//    @JsonIgnore
     private List<TeacherStudent> teacherStudents = new ArrayList<>();
 
     public Teacher(String name) {

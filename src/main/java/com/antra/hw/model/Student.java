@@ -29,8 +29,6 @@ public class Student{
     private String name;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = false)
-//    @JsonIgnoreProperties(value = { "student", "teacher" })
-//    @JsonIgnore
     private List<TeacherStudent> teacherStudents = new ArrayList<>();
 
     public Student(String name) {

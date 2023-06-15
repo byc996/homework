@@ -26,37 +26,47 @@ public class StudentController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
-        Student student = studentService.getStudentById(id);
-        return new ResponseEntity<>(student, HttpStatus.OK);
+        Optional<Student> student = studentService.getStudentById(id);
+        if (!student.isPresent()) {
+            log.error("student(" + id + ") does not exist");
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(student.get());
     }
 
     @GetMapping("/list")
     public ResponseEntity<List<Student>> listStudents() {
         List<Student> students = studentService.listStudents();
-        return new ResponseEntity<>(students, HttpStatus.OK);
+        log.info("Number of students: " + students.size());
+        return ResponseEntity.ok(students);
     }
 
     @PostMapping("/add")
     public ResponseEntity<Student> addStudent(@RequestBody Student student) {
         Student stu = studentService.addStudent(student);
-        return new ResponseEntity<>(stu, HttpStatus.OK);
+        return new ResponseEntity<>(stu, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
     public ResponseEntity<Student> updateStudent(@RequestBody Student student) {
         Student stu = studentService.updateStudent(student);
-        return new ResponseEntity<>(stu, HttpStatus.OK);
+        return ResponseEntity.ok(stu);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteStudent(@PathVariable Long id) {
-        studentService.deleteStudentById(id);
+    public ResponseEntity<String> deleteStudent(@PathVariable Long id) {
+        try {
+            studentService.deleteStudentById(id);
+        } catch (Exception e) {
+            log.error("Fail to delete student " + id + " ." + e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+        return ResponseEntity.ok("Successfully deleted student " + id);
     }
 
     @GetMapping("/{id}/teachers")
     public ResponseEntity<List<TeacherStudent>> listTeacherStudents(@PathVariable Long id) {
         List<TeacherStudent> teacherStudents = studentService.getTeacherStudentsByStudentId(id);
-        log.info("The number of teachers for student(" + id + ") : " + teacherStudents.size());
-        return new ResponseEntity<>(teacherStudents, HttpStatus.OK);
+        return ResponseEntity.ok(teacherStudents);
     }
 }

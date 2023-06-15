@@ -23,12 +23,10 @@ public class TeacherStudent{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "s_id")
-//    @JsonIgnoreProperties(value = { "teacherStudents"})
     private Student student;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "t_id")
-//    @JsonIgnoreProperties(value = { "teacherStudents"})
     private Teacher teacher;
 
 
