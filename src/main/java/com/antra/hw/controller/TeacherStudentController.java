@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/teacher_student")
+@RequestMapping("/teacher_students")
 public class TeacherStudentController {
 
     private final TeacherStudentService teacherStudentService;
@@ -22,7 +22,7 @@ public class TeacherStudentController {
     }
 
 
-    @GetMapping("/list")
+    @GetMapping()
     public ResponseEntity<List<TeacherStudent>> listTeacherStudents() {
         List<TeacherStudent> teacherStudents = teacherStudentService.listTeacherStudents();
         return new ResponseEntity<>(teacherStudents, HttpStatus.OK);
