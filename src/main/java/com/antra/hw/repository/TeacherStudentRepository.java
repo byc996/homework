@@ -13,8 +13,7 @@ import java.util.List;
 public interface TeacherStudentRepository extends JpaRepository<TeacherStudent, Long> {
 
 
-    List<TeacherStudent> findTeacherStudentsByStudentId(Long id);
+    List<TeacherStudent> findTeacherStudentsByStudentId(Long s_id);
 
-//    @Query(nativeQuery = true, value = "select * from teacher_student where s_id = :student_id")
-//    List<TeacherStudent> findBySID(@Param("student_id") Long id);
+    List<TeacherStudent> findTeacherStudentsByTeacherId(Long t_id);
 }

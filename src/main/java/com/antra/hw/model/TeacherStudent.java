@@ -42,16 +42,5 @@ public class TeacherStudent{
                 ", t_id=" + teacher.getId() +
                 '}';
     }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TeacherStudent that = (TeacherStudent) o;
-        return Objects.equals(id, that.id) && Objects.equals(student, that.student) && Objects.equals(teacher, that.teacher);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, student, teacher);
-    }
 }

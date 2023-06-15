@@ -64,9 +64,5 @@ public class StudentController {
         return ResponseEntity.ok("Successfully deleted student " + id);
     }
 
-    @GetMapping("/{id}/teachers")
-    public ResponseEntity<List<TeacherStudent>> listTeacherStudents(@PathVariable Long id) {
-        List<TeacherStudent> teacherStudents = studentService.getTeacherStudentsByStudentId(id);
-        return ResponseEntity.ok(teacherStudents);
-    }
+
 }

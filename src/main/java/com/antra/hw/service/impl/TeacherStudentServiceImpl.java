@@ -25,4 +25,14 @@ public class TeacherStudentServiceImpl implements TeacherStudentService {
     public List<TeacherStudent> listTeacherStudents() {
         return teacherStudentRepository.findAll();
     }
+
+    @Override
+    public List<TeacherStudent> getTeacherStudentsByStudentId(Long s_id) {
+        return teacherStudentRepository.findTeacherStudentsByStudentId(s_id);
+    }
+
+    @Override
+    public List<TeacherStudent> getTeacherStudentsByTeacherId(Long t_id) {
+        return teacherStudentRepository.findTeacherStudentsByTeacherId(t_id);
+    }
 }

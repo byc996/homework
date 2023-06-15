@@ -10,4 +10,8 @@ public interface TeacherStudentService {
 
 
     List<TeacherStudent> listTeacherStudents();
+
+    List<TeacherStudent> getTeacherStudentsByStudentId(Long s_id);
+
+    List<TeacherStudent> getTeacherStudentsByTeacherId(Long t_id);
 }

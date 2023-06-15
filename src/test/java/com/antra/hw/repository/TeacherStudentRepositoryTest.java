@@ -24,7 +24,7 @@ class TeacherStudentRepositoryTest {
     private TeacherStudentRepository teacherStudentRepository;
     @Test
     public void testAddTeacherStudent() {
-        Student stu10 = studentRepository.findById(1L).get();
+        Student stu10 = studentRepository.findById(5L).get();
         Teacher teacher10 = teacherRepository.findById(2L).get();
         TeacherStudent teacherStudent = teacherStudentRepository.save(new TeacherStudent(stu10, teacher10));
         System.out.println(teacherStudent);

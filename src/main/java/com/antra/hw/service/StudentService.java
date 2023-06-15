@@ -18,5 +18,5 @@ public interface StudentService {
     Optional<Student> getStudentById(Long id);
 
     List<Student> listStudents();
-    List<TeacherStudent> getTeacherStudentsByStudentId(Long id);
+
 }

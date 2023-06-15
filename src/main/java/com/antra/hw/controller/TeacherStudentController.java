@@ -27,4 +27,16 @@ public class TeacherStudentController {
         List<TeacherStudent> teacherStudents = teacherStudentService.listTeacherStudents();
         return new ResponseEntity<>(teacherStudents, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/search", params = "s_id")
+    public ResponseEntity<List<TeacherStudent>> searchTeacherStudentsByStudentId(@RequestParam Long s_id) {
+        List<TeacherStudent> teacherStudents = teacherStudentService.getTeacherStudentsByStudentId(s_id);
+        return ResponseEntity.ok(teacherStudents);
+    }
+
+    @GetMapping(value = "/search", params = "t_id")
+    public ResponseEntity<List<TeacherStudent>> searchTeacherStudentsByTeacherId(@RequestParam Long t_id) {
+        List<TeacherStudent> teacherStudents = teacherStudentService.getTeacherStudentsByTeacherId(t_id);
+        return ResponseEntity.ok(teacherStudents);
+    }
 }

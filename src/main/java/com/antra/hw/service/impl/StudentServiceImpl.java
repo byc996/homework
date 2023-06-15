@@ -17,12 +17,10 @@ import java.util.Optional;
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
-    private final TeacherStudentRepository teacherStudentRepository;
 
     @Autowired
-    public StudentServiceImpl(StudentRepository studentRepository, TeacherStudentRepository teacherStudentRepository) {
+    public StudentServiceImpl(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
-        this.teacherStudentRepository = teacherStudentRepository;
     }
     @Override
     public Student addStudent(Student student) {
@@ -49,8 +47,5 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findAll();
     }
 
-    @Override
-    public List<TeacherStudent> getTeacherStudentsByStudentId(Long id) {
-        return teacherStudentRepository.findTeacherStudentsByStudentId(id);
-    }
+
 }
